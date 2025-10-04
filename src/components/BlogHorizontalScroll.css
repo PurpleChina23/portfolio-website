@@ -1,0 +1,206 @@
+.blog-scroll-section {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-main-title {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101;
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: #E8E6F0;
+}
+
+.blog-scroll-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 10vw;
+  will-change: transform;
+}
+
+.blog-title-container .section-title {
+  font-size: 3rem;
+  color: white;
+  margin: 0;
+}
+
+.blog-title-container .section-title::after {
+  display: none;
+}
+
+.blog-card-scroll {
+  min-width: 400px;
+  max-width: 400px;
+  height: 500px;
+  flex-shrink: 0;
+  background: radial-gradient(ellipse at top, rgba(139, 69, 139, 0.4) 0%, rgba(75, 0, 130, 0.3) 50%, rgba(25, 0, 51, 0.5) 100%);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  padding: 3rem 2rem;
+  border: 1px solid rgba(186, 85, 211, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 12px 48px rgba(139, 69, 139, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              0 0 80px rgba(186, 85, 211, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.blog-card-scroll::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(186, 85, 211, 0.4) 0%, transparent 70%);
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.blog-card-scroll::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%,
+      rgba(138, 43, 226, 0.2) 100%);
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.blog-card-scroll:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: rgba(186, 85, 211, 0.6);
+  box-shadow: 0 20px 60px rgba(139, 69, 139, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              0 0 120px rgba(186, 85, 211, 0.4);
+}
+
+.blog-card-scroll:hover::before {
+  opacity: 1;
+  top: -30%;
+}
+
+.blog-card-scroll:hover::after {
+  opacity: 1;
+}
+
+.blog-card-scroll .blog-card-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(186, 85, 211, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+.blog-card-scroll:hover .blog-card-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 30px rgba(186, 85, 211, 0.8));
+}
+
+.blog-card-scroll .blog-card-icon::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(186, 85, 211, 0.4) 100%);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.blog-card-scroll .blog-card-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.blog-card-scroll h3 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 2;
+  font-weight: 700;
+  color: #E8E6F0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.01em;
+}
+
+.blog-card-scroll .blog-date {
+  color: #B8B5C8;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+  font-weight: 500;
+}
+
+.blog-card-scroll p:last-child {
+  color: #D4BDFF;
+  position: relative;
+  z-index: 2;
+  line-height: 1.8;
+  font-size: 1.15rem;
+  max-width: 320px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-card-scroll {
+    min-width: 320px;
+    max-width: 320px;
+    height: 450px;
+  }
+
+  .blog-title-container {
+    min-width: 200px;
+  }
+
+  .blog-title-container .section-title {
+    font-size: 2rem;
+  }
+}

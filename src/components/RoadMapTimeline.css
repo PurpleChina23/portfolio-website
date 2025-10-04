@@ -1,0 +1,99 @@
+.roadmap-timeline {
+  padding: 2rem 0;
+}
+
+.timeline-date-text {
+  color: #B8B5C8 !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+}
+
+.timeline-title {
+  color: #E8E6F0 !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.timeline-description {
+  color: #D4BDFF !important;
+  font-size: 1.2rem !important;
+  line-height: 1.8 !important;
+}
+
+.timeline-connector {
+  background: linear-gradient(180deg,
+    rgba(186, 85, 211, 0.6) 0%,
+    rgba(138, 43, 226, 0.4) 100%) !important;
+  width: 3px !important;
+}
+
+.timeline-connector-fade {
+  background: linear-gradient(180deg,
+    rgba(186, 85, 211, 0.4) 0%,
+    transparent 100%) !important;
+  width: 3px !important;
+}
+
+.timeline-dot {
+  background: rgba(186, 85, 211, 0.3) !important;
+  border: 3px solid rgba(186, 85, 211, 0.6) !important;
+  box-shadow: 0 0 20px rgba(186, 85, 211, 0.4) !important;
+  padding: 8px !important;
+}
+
+.timeline-dot svg {
+  color: #E8E6F0 !important;
+  font-size: 1.5rem !important;
+}
+
+.timeline-dot-primary {
+  background: rgba(138, 43, 226, 0.3) !important;
+  border-color: rgba(138, 43, 226, 0.6) !important;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4) !important;
+}
+
+.timeline-dot-secondary {
+  background: rgba(147, 51, 234, 0.3) !important;
+  border-color: rgba(147, 51, 234, 0.6) !important;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.4) !important;
+}
+
+.timeline-dot-accent {
+  background: rgba(168, 85, 247, 0.3) !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4) !important;
+}
+
+.timeline-dot-future {
+  background: rgba(192, 132, 252, 0.3) !important;
+  border-color: rgba(192, 132, 252, 0.6) !important;
+  box-shadow: 0 0 30px rgba(192, 132, 252, 0.5) !important;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(192, 132, 252, 0.7);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .roadmap-timeline {
+    padding: 1rem 0;
+  }
+
+  .timeline-title {
+    font-size: 1.2rem !important;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem !important;
+  }
+}
