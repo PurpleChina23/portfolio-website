@@ -2,7 +2,7 @@ import './TechScroll.css';
 
 const TechScroll = () => {
   return (
-    <div className="tech-scroll-section">
+    <div id="skills" className="tech-scroll-section">
       <h2 className="tech-scroll-title">Skills</h2>
       <TechScrollRow1 />
       <TechScrollRow2 />

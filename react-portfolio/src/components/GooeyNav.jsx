@@ -115,6 +115,50 @@ const GooeyNav = ({
     if (filterRef.current) {
       makeParticles(filterRef.current);
     }
+
+    // Handle special navigation for Projects and Skills sections
+    const href = items[index]?.href;
+    if (href === '#projects') {
+      e.preventDefault();
+      const projectsSection = document.querySelector('#projects');
+      if (projectsSection) {
+        // Get the exact position where the section starts
+        const rect = projectsSection.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const sectionTop = rect.top + scrollTop;
+
+        // Check if mobile (no horizontal scroll animation)
+        const isMobile = window.innerWidth <= 480;
+
+        if (isMobile) {
+          // On mobile, just scroll to the section top
+          window.scrollTo({
+            top: sectionTop - 100,
+            behavior: 'smooth'
+          });
+        } else {
+          // On desktop, scroll to centered/paused state (3 viewport heights into the section)
+          const scrollDistance = window.innerHeight * 3;
+          window.scrollTo({
+            top: sectionTop + scrollDistance,
+            behavior: 'smooth'
+          });
+        }
+      }
+    } else if (href === '#skills') {
+      e.preventDefault();
+      const skillsSection = document.querySelector('#skills');
+      if (skillsSection) {
+        const rect = skillsSection.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const skillsTop = rect.top + scrollTop;
+
+        window.scrollTo({
+          top: skillsTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    }
   };
 
   const handleKeyDown = (e, index) => {

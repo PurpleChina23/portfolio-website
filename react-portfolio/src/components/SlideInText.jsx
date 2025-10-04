@@ -7,17 +7,25 @@ const SlideInText = ({ text = "Michael" }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if user has scrolled near bottom
-      const scrollHeight = document.documentElement.scrollHeight;
+      // Get the contact section (Get In Touch)
+      const contactSection = document.querySelector('#contact');
+      if (!contactSection) return;
+
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const clientHeight = document.documentElement.clientHeight;
+      const contactRect = contactSection.getBoundingClientRect();
+      const contactBottom = contactRect.bottom + scrollTop;
+      const viewportHeight = window.innerHeight;
 
-      const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+      // Check if user has scrolled past the contact section
+      const scrolledPastContact = scrollTop + viewportHeight > contactBottom;
 
-      // Start animation when within 500px of bottom
-      if (distanceFromBottom < 500) {
-        // Calculate progress (0 to 1) based on scroll position
-        const progress = Math.min(1, (500 - distanceFromBottom) / 500);
+      if (scrolledPastContact) {
+        // Calculate how far past the contact section we've scrolled
+        const distancePastContact = (scrollTop + viewportHeight) - contactBottom;
+        const animationTriggerDistance = 300; // Start animating after 300px past contact
+
+        // Calculate progress (0 to 1) based on distance scrolled past contact
+        const progress = Math.min(1, distancePastContact / animationTriggerDistance);
         setScrollProgress(progress);
       } else {
         setScrollProgress(0);

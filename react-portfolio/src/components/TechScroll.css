@@ -1,6 +1,7 @@
 .tech-scroll-section {
   width: 100%;
-  padding: 2rem 0;
+  padding: 4rem 0 12rem 0;
+  scroll-margin-top: 100px;
 }
 
 .tech-scroll-title {
@@ -28,7 +29,7 @@
 .tech-scroll-wrapper {
   width: 100%;
   overflow: hidden;
-  padding: 1rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
@@ -51,6 +52,10 @@
   animation: scrollRight 40s linear infinite;
 }
 
+.tech-scroll-content:hover {
+  animation-play-state: paused;
+}
+
 .tech-item {
   display: flex;
   flex-direction: column;
@@ -69,7 +74,6 @@
 }
 
 .tech-item:hover {
-  transform: translateY(-8px);
   border-color: rgba(186, 85, 211, 0.6);
   box-shadow: 0 20px 60px rgba(139, 69, 139, 0.5),
               inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -84,7 +88,6 @@
 
 .tech-item:hover .tech-icon {
   color: rgba(255, 255, 255, 1);
-  transform: scale(1.1) rotate(5deg);
 }
 
 .tech-icon svg {

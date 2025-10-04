@@ -71,14 +71,6 @@
 
 @media (max-width: 768px) {
   .dodging-button-container {
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-    height: 150px;
-  }
-
-  .dodging-button {
-    padding: 12px 24px;
-    font-size: 14px;
+    display: none;
   }
 }

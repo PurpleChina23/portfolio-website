@@ -1,6 +1,6 @@
 .slide-in-text-container {
   position: fixed;
-  bottom: -10%;
+  bottom: -25%;
   left: 0;
   right: 0;
   width: 100%;
@@ -16,7 +16,7 @@
 .slide-in-text {
   display: flex;
   align-items: baseline;
-  font-size: clamp(4rem, 15vw, 12rem);
+  font-size: clamp(8rem, 25vw, 20rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: transparent;
@@ -47,20 +47,24 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .slide-in-text-container {
-    bottom: -12%;
+    bottom: -20%;
   }
 
   .slide-in-text {
-    font-size: clamp(3rem, 20vw, 6rem);
+    font-size: clamp(5rem, 22vw, 12rem);
+    -webkit-text-stroke: 1.5px rgba(180, 170, 160, 0.6);
+    text-stroke: 1.5px rgba(180, 170, 160, 0.6);
   }
 }
 
 @media (max-width: 480px) {
   .slide-in-text-container {
-    bottom: -10%;
+    bottom: -18%;
   }
 
   .slide-in-text {
-    font-size: clamp(2.5rem, 18vw, 5rem);
+    font-size: clamp(4rem, 20vw, 8rem);
+    -webkit-text-stroke: 1px rgba(180, 170, 160, 0.6);
+    text-stroke: 1px rgba(180, 170, 160, 0.6);
   }
 }

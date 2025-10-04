@@ -128,6 +128,15 @@ function App() {
         </div>
       </section>
 
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <p className="footer-version">Version 2.5 — still debugging life.</p>
+          <p className="footer-copyright">© 2025 Michael Chen — Crafted in pixels and patience.</p>
+          <p className="footer-thanks">Thanks for scrolling all the way down — you clearly have great taste.</p>
+        </div>
+      </footer>
+
       {/* Dodging Button */}
       <DodgingButton />
 
@@ -135,13 +144,14 @@ function App() {
       <SlideInText text="Michael" />
 
       {/* Gooey Navigation */}
-      <div style={{ position: 'fixed', top: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 1000 }}>
+      <div className="nav-wrapper">
         <GooeyNav
           items={[
             { label: 'Home', href: '#home' },
             { label: 'About', href: '#about' },
             { label: 'Career', href: '#career' },
             { label: 'Projects', href: '#projects' },
+            { label: 'Skills', href: '#skills' },
             { label: 'Contact', href: '#contact' }
           ]}
           initialActiveIndex={0}

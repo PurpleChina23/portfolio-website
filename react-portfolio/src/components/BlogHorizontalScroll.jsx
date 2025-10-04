@@ -16,6 +16,13 @@ const BlogHorizontalScroll = () => {
 
     if (!section || !container) return;
 
+    // Disable horizontal scroll animation on mobile
+    const isMobile = window.innerWidth <= 480;
+    if (isMobile) {
+      gsap.set(container, { x: 0 });
+      return;
+    }
+
     const cards = gsap.utils.toArray('.blog-card-scroll');
 
     // Calculate scroll distance - reduce multiplier to make it faster

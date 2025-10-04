@@ -190,10 +190,24 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .blog-main-title {
+    top: 3vh;
+    font-size: 2.5rem;
+  }
+
   .blog-card-scroll {
     min-width: 320px;
     max-width: 320px;
     height: 450px;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .blog-card-scroll h3 {
+    font-size: 1.6rem;
+  }
+
+  .blog-card-scroll p:last-child {
+    font-size: 1rem;
   }
 
   .blog-title-container {
@@ -202,5 +216,72 @@
 
   .blog-title-container .section-title {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-scroll-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 0 4rem 0;
+    overflow: visible;
+    align-items: flex-start;
+  }
+
+  .blog-main-title {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .blog-scroll-container {
+    flex-direction: column;
+    height: auto;
+    padding: 0 1rem;
+    gap: 2rem;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .blog-card-scroll {
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 380px;
+    padding: 2rem 1.5rem;
+    margin: 0;
+  }
+
+  .blog-card-scroll h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-card-scroll .blog-date {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card-scroll p:last-child {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .blog-card-scroll .blog-card-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-card-scroll .blog-card-icon svg {
+    width: 50px;
+    height: 50px;
   }
 }
