@@ -3,7 +3,7 @@ import './ScrollImageSequence.css';
 
 const ScrollImageSequence = ({
   frameCount = 150,  // Total number of frames
-  folderPath = '/frames',  // Folder in public/ containing frames
+  folderPath = './frames',  // Folder in public/ containing frames
   filePrefix = 'frame',  // Prefix for frame files
   fileExtension = 'jpg'  // Image format (jpg, png, webp)
 }) => {
