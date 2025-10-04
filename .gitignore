@@ -27,7 +27,7 @@ dist-ssr
 *.sw?
 
 # Old portfolio files (keeping only react-portfolio)
-index.html
-script.js
-styles.css
+/index.html
+/script.js
+/styles.css
 .superdesign/
