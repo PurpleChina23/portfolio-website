@@ -1,0 +1,56 @@
+.bounce-gradient-container {
+  display: inline-flex;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.bounce-gradient-letter {
+  display: inline-block;
+  background: linear-gradient(135deg,
+    #fff 0%,
+    #a0d8ff 25%,
+    #ff6ec7 50%,
+    #ffd700 75%,
+    #fff 100%);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  cursor: default;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+.bounce-gradient-letter:hover {
+  animation: gradientShift 0.5s ease infinite, bounce 0.5s ease;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bounce-gradient-container {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
