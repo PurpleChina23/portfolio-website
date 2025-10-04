@@ -45,11 +45,11 @@
 }
 
 .scroll-left {
-  animation: scrollLeft 40s linear infinite;
+  animation: scrollLeft 50s ease-in-out infinite;
 }
 
 .scroll-right {
-  animation: scrollRight 40s linear infinite;
+  animation: scrollRight 50s ease-in-out infinite;
 }
 
 .tech-scroll-content:hover {
@@ -107,8 +107,14 @@
   0% {
     transform: translateX(0);
   }
-  100% {
+  40% {
     transform: translateX(-50%);
+  }
+  60% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -116,8 +122,14 @@
   0% {
     transform: translateX(-50%);
   }
-  100% {
+  40% {
     transform: translateX(0);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
@@ -146,5 +158,50 @@
 
   .tech-scroll-title {
     font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-scroll-section {
+    padding: 3rem 0 6rem 0;
+  }
+
+  .tech-scroll-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .tech-scroll-wrapper {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .tech-scroll-container {
+    overflow: visible;
+  }
+
+  .tech-scroll-content {
+    animation: none !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .tech-item {
+    padding: 1rem 0.75rem;
+    min-width: auto;
+    width: 100%;
+    flex-shrink: 1;
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-name {
+    font-size: 0.75rem;
   }
 }

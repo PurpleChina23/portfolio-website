@@ -95,6 +95,15 @@ const GooeyNav = ({
 
   const handleClick = (e, index) => {
     const liEl = e.currentTarget;
+    const item = items[index];
+
+    // Handle button click callback (for Resume)
+    if (item.onClick) {
+      e.preventDefault();
+      item.onClick();
+      return;
+    }
+
     if (activeIndex === index) return;
 
     setActiveIndex(index);
@@ -117,7 +126,7 @@ const GooeyNav = ({
     }
 
     // Handle special navigation for Projects and Skills sections
-    const href = items[index]?.href;
+    const href = item?.href;
     if (href === '#projects') {
       e.preventDefault();
       const projectsSection = document.querySelector('#projects');
@@ -196,7 +205,12 @@ const GooeyNav = ({
         <ul ref={navRef}>
           {items.map((item, index) => (
             <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
+              <a
+                href={item.href || '#'}
+                onClick={e => handleClick(e, index)}
+                onKeyDown={e => handleKeyDown(e, index)}
+                className={item.onClick ? 'nav-button' : ''}
+              >
                 {item.label}
               </a>
             </li>

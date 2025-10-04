@@ -16,36 +16,33 @@ const BlogHorizontalScroll = () => {
 
     if (!section || !container) return;
 
-    // Disable horizontal scroll animation on mobile
+    // Check if mobile
     const isMobile = window.innerWidth <= 480;
     if (isMobile) {
-      gsap.set(container, { x: 0 });
+      // Ensure no transforms on mobile
+      gsap.set(container, { clearProps: 'all' });
       return;
     }
 
     const cards = gsap.utils.toArray('.blog-card-scroll');
 
-    // Calculate scroll distance - reduce multiplier to make it faster
+    // Calculate scroll distance
     const scrollDistance = window.innerHeight * 3;
-    const pauseDistance = window.innerHeight * 5; // Additional scroll distance for the pause
+    const pauseDistance = window.innerHeight * 3;
 
     // Calculate positions
     const cardWidth = 400;
-    const gap = 64; // 4rem margin-right from CSS
-
-    // Calculate total width of all cards
+    const gap = 64;
     const totalCardsWidth = cards.length * cardWidth + (cards.length - 1) * gap;
-
-    // Start position: all cards off-screen to the right
     const startOffset = window.innerWidth;
 
-    // End position: stop a bit more to the left of center
-    const endOffset = -(totalCardsWidth / 2 - window.innerWidth / 2) - 70;
+    // Center the cards properly - add offset to move them a bit more to the left
+    const endOffset = -(totalCardsWidth / 2 - window.innerWidth / 2) - 80;
 
     // Set initial position
     gsap.set(container, { x: startOffset });
 
-    // Create timeline for the animation with pause
+    // Create timeline with both animation and pause
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
@@ -53,25 +50,28 @@ const BlogHorizontalScroll = () => {
         end: () => `+=${scrollDistance + pauseDistance}`,
         pin: true,
         scrub: 1,
-        invalidateOnRefresh: true
+        invalidateOnRefresh: true,
+        anticipatePin: 1
       }
     });
 
-    // Animate cards to center (takes 3 viewport heights)
+    // Animate cards from right to center (takes first half of timeline)
     tl.to(container, {
       x: endOffset,
-      ease: 'none',
-      duration: scrollDistance
-    })
-    // Hold position (pause for 5 viewport heights)
+      ease: 'none'
+    }, 0)
+    // Hold position at center (second half of timeline)
     .to(container, {
       x: endOffset,
-      ease: 'none',
-      duration: pauseDistance
-    });
+      ease: 'none'
+    }, 0.5);
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.trigger === section) {
+          trigger.kill();
+        }
+      });
     };
   }, []);
 
