@@ -3,7 +3,7 @@ import './ScrollImageSequence.css';
 
 const ScrollImageSequence = ({
   frameCount = 150,  // Total number of frames
-  folderPath = './frames',  // Folder in public/ containing frames
+  folderPath = 'frames',  // Folder in public/ containing frames
   filePrefix = 'frame',  // Prefix for frame files
   fileExtension = 'jpg'  // Image format (jpg, png, webp)
 }) => {
@@ -17,10 +17,13 @@ const ScrollImageSequence = ({
     const loadedImages = [];
     let loaded = 0;
 
+    // Get base URL from Vite's import.meta.env
+    const baseUrl = import.meta.env.BASE_URL || '/';
+
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image();
       const frameNumber = String(i).padStart(4, '0'); // e.g., 0001, 0002
-      img.src = `${folderPath}/${filePrefix}_${frameNumber}.${fileExtension}`;
+      img.src = `${baseUrl}${folderPath}/${filePrefix}_${frameNumber}.${fileExtension}`;
 
       img.onload = () => {
         loaded++;
@@ -28,7 +31,7 @@ const ScrollImageSequence = ({
       };
 
       img.onerror = () => {
-        console.warn(`Failed to load: ${img.src}`);
+        console.error(`Failed to load: ${img.src}`);
         loaded++;
         setImagesLoaded(loaded);
       };
